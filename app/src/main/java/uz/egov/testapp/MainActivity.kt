@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
         //MARK: init client credentials
         NfcConst.PD_ALLOW=false
         NfcConst.CLIENT_ID=""
-        NfcConst.USER_ID=""
         NfcConst.CLIENT_SECRET=""
+        NfcConst.USER_ID=""
 
 
         mrzBtn.setOnClickListener {
