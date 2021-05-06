@@ -27,7 +27,6 @@ import uz.egov.docreader_mrz_nfc.view.nfc.ActivityNfcReader
 class MainActivity : AppCompatActivity() {
     var mrzPassportInfo: NfcData?=null
     var chipData: EDocument?=null
-    var faceResult:Double=-1.0
     private val PERMISSIONS_REQUEST_CODE = 100
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +45,6 @@ class MainActivity : AppCompatActivity() {
 
         nfcBtn.setOnClickListener{
             openNfcActivity()
-        }
-
-        faceBtn.setOnClickListener{
-//            openFaceActivity()
         }
 
     }
@@ -96,15 +91,6 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intent, NFC_READER_REQUEST_CODE)
     }
 
-//    private fun openFaceActivity() {
-//        val intent = Intent(this, AuthenticationActivity::class.java)
-//        intent.putExtra(FULL_ISSUE_DATE_LABEL,mrzPassportInfo?.fullPassportData?.date_begin_document)
-//        intent.putExtra(FULL_PINFL_LABEL,mrzPassportInfo?.pinfl)
-//        intent.putExtra(FULL_DOC_NUMBER_LABEL,mrzPassportInfo?.fullPassportData?.document)
-//        startActivityForResult(intent,FULL_FACE_ID_REQUEST_CODE)
-//    }
-
-
     @SuppressLint("ShowToast")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -137,20 +123,6 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-//                FULL_FACE_ID_REQUEST_CODE -> {
-//                    when (resultCode) {
-//                        RESULT_OK -> {
-//                            // similarity between selfie and document photo from SPC
-//                            faceResult=data!!.getDoubleExtra(FULL_DATA_LABEL, -1.0)
-//                            Log.d("Passport info","Pass info $faceResult")
-//                        }
-//                        RESULT_CANCELED -> {
-//                            val error: String = data?.getStringExtra(FULL_ERROR_LABEL) ?: ""
-//                            if(error.isNotEmpty())
-//                                Toast.makeText(this@MainActivity, error, Toast.LENGTH_LONG).show()
-//                        }
-//                    }
-//                }
         }
     }
 
